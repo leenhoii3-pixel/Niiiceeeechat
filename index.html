@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>채팅 입장 안내</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 360px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 16px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back {
+      border: none;
+      background: #eee;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .item:hover {
+      background: #f9fafb;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: white;
+      width: 320px;
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    .close {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #111827;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <button class="back" onclick="history.back()">←</button>
+    <div class="title">입장 전 확인</div>
+    <div></div>
+  </div>
+
+  <div class="content">
+    <div class="item" onclick="openModal(1)">이용약관</div>
+    <div class="item" onclick="openModal(2)">개인정보 처리방침</div>
+    <div class="item" onclick="rickroll()">커뮤니티 규칙</div>
+
+    <button class="btn">동의하고 입장</button>
+  </div>
+</div>
+
+<!-- 모달 -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div id="modal-text"></div>
+    <button class="close" onclick="closeModal()">닫기</button>
+  </div>
+</div>
+
+<script>
+  function openModal(type) {
+    const text = document.getElementById("modal-text");
+
+    if (type === 1) {
+      text.innerHTML = "본 서비스는 건전한 이용을 위해 최소한의 약관을 따릅니다. 불법적인 활동은 금지됩니다.";
+    } else if (type === 2) {
+      text.innerHTML = "사용자의 개인정보는 안전하게 보호되며, 서비스 운영 목적 외에는 사용되지 않습니다.";
+    }
+
+    document.getElementById("modal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  function rickroll() {
+    location.replace("https://youtu.be/dQw4w9WgXcQ?si=q1RJYCCADTykgHai");
+  }
+</script>
+
+</body>
+</html>
